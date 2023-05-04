@@ -1,0 +1,84 @@
+{
+  "account": {
+    "number": "000002",
+    "agency": "001",
+    "balance": 66.0,
+    "status": "BLOCKED"
+  },
+  "deposits": [
+    {
+      "id": 7,
+      "valueDeposited": 10.0,
+      "createdAt": "2023-05-03T16:09:22.636664-03:00"
+    },
+    {
+      "id": 8,
+      "valueDeposited": 20.0,
+      "createdAt": "2023-05-03T16:12:59.039182-03:00"
+    },
+    {
+      "id": 9,
+      "valueDeposited": 30.0,
+      "createdAt": "2023-05-03T16:14:19.699796-03:00"
+    },
+    {
+      "id": 10,
+      "valueDeposited": 40.0,
+      "createdAt": "2023-05-03T16:15:48.427966-03:00"
+    },
+    {
+      "id": 11,
+      "valueDeposited": 40.0,
+      "createdAt": "2023-05-03T16:18:14.092882-03:00"
+    },
+    {
+      "id": 21,
+      "valueDeposited": 40.0,
+      "createdAt": "2023-05-04T05:13:47.415698-03:00"
+    }
+  ],
+  "draws": [
+    {
+      "id": 12,
+      "withdrawnAmount": 40.0,
+      "createdAt": "2023-05-03T17:38:08.702382-03:00"
+    },
+    {
+      "id": 13,
+      "withdrawnAmount": 50.0,
+      "createdAt": "2023-05-03T17:42:50.19758-03:00"
+    },
+    {
+      "id": 14,
+      "withdrawnAmount": 1.0,
+      "createdAt": "2023-05-03T17:43:14.781508-03:00"
+    },
+    {
+      "id": 15,
+      "withdrawnAmount": 1.0,
+      "createdAt": "2023-05-03T17:50:08.780844-03:00"
+    },
+    {
+      "id": 18,
+      "withdrawnAmount": 1.0,
+      "createdAt": "2023-05-04T03:46:02.782579-03:00"
+    },
+    {
+      "id": 22,
+      "withdrawnAmount": 1.0,
+      "createdAt": "2023-05-04T05:15:28.360315-03:00"
+    }
+  ],
+  "transfers": [
+    {
+      "id": 17,
+      "amountTransferred": 10.0,
+      "createdAt": "2023-05-03T18:21:45.104789-03:00"
+    },
+    {
+      "id": 24,
+      "amountTransferred": 10.0,
+      "createdAt": "2023-05-04T05:16:11.11114-03:00"
+    }
+  ]
+}

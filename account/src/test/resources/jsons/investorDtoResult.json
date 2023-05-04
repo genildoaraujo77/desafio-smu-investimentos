@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "email": "genildo.araujo77@outlook.com",
+  "name": "Genildo Araujo",
+  "type": "PF",
+  "account": {
+    "number": "000001",
+    "agency": "001",
+    "balance": 0.0,
+    "status": "OPEN"
+  }
+}

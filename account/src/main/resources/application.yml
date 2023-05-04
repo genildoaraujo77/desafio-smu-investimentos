@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://${MYSQL_ROOT_HOST:localhost}:3306/investor?createDatabaseIfNotExist=true&serverTimezone=UTC
+    password: senha123
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        event:
+          merge:
+            entity_copy_observer: allow
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8082
+          #jwk-set-uri: http://localhost:8082/oauth2/jwks

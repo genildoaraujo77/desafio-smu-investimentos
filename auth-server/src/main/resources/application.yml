@@ -1,0 +1,25 @@
+spring:
+  flyway:
+    enabled: 'true'
+    baselineOnMigrate: 'true'
+  datasource:
+    username: root
+    url: jdbc:mysql://${MYSQL_ROOT_HOST:localhost}:3306/investor?createDatabaseIfNotExist=true&serverTimezone=UTC
+    password: senha123
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: none
+  session:
+    store-type: jdbc
+server:
+  port: 8082
+
+smu:
+  auth:
+    provider-uri: "http://localhost:8082"
+    jks:
+      keypass: 123456
+      storepass: 123456
+      alias: smuinv
+      path: keystore/smuinv.jks

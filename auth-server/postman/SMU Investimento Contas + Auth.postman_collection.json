@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "313563e5-efa4-4f67-a4e8-7c51b73b7a55",
+		"name": "SMU Investimento Contas + Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8544399"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Requisição Authorization Code pelo (Navegador)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/oauth2/authorize?response_type=code&client_id=smuconta&state=abc&redirect_uri=https://oidcdebugger.com/debug&scope=myuser:read myuser:write contas:write",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"oauth2",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "smuconta"
+								},
+								{
+									"key": "state",
+									"value": "abc"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oidcdebugger.com/debug"
+								},
+								{
+									"key": "scope",
+									"value": "myuser:read myuser:write contas:write"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação com Authorization Code - SMUCONTA",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "smuconta",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "3Ie6GPQ3--B4cQVP1txCjvPeC-5rQJs4p19nqKdBN8ENRWtDMKNTvOYgZ_R2AZirEZItIeS9aepALHd80TcqMTbtE6JWb6qJR9Vvv8B0XeLlwXwu_5RAeXqidnaMPq_n",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oidcdebugger.com/debug",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8082/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação com Refresh Token - SMUCONTA",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "smuaccount",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "nFgER6UrCnNr1WtWHO5klLfgbs8oAIEA4lYuMQnNTiMJePJXlLRd0o2npYhnS8QGyYEfks0Q1dcRuYV9hljnlCNcw9mOBYShSUZOKP-XeMRt1atthXut9cZ5tXIiw_CF",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8082/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revogar permissões da aplicação client",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "smuconta",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "ptI9ZGLuYvJA1jGXng66-tMA0wuAQOzuZMjkky254DEjgXtzkwijPJByz2FS051PPJNLAPAjSGJqjDs0_w7YYTiGilpsIfeilmhBVr-vLsS1OMSP_3Wa1vNs0LeowfyB",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8082/oauth2/revoke",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"oauth2",
+								"revoke"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Criar Usuario e retorna com a conta criada",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"pamella.araujo77@outlook.com\",\n    \"name\": \"Pamella Araujo\",\n    \"cpfCnpj\": \"41944820850\",\n    \"password\": \"123456\",\n    \"type\": \"PF\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJwYW1lbGxhLmFyYXVqbzc3QG91dGxvb2suY29tIiwiYXVkIjoic211Y29udGEiLCJuYmYiOjE2ODI5NzYyNDEsInVzZXJfaWQiOiIxMCIsInNjb3BlIjpbIm15dXNlcjpyZWFkIiwibXl1c2VyOndyaXRlIiwiY29udGFzOndyaXRlIl0sImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDgyIiwidXNlcl9mdWxsbmFtZSI6IlBhbWVsbGEgQXJhdWpvIiwiZXhwIjoxNjgyOTc3MTQxLCJpYXQiOjE2ODI5NzYyNDEsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl19.KrNQlNOOZ_6y8XpvtTVRlZlVGw30MBCYleft04f44bOzstQbC-DBoBcVve-8XGMvgurqPPxSZy3KINm0SrcNeGQbnBwZso83XBaDDikFLGyvm0DPRoOPvC07nM14M7LR-MDTv0_TNAScvwgMHbSXrNDd9quzoL5YjucxaPocL_u8W509bqfCZA07HxgPtp3CV6B01pwTQ0yrb482PyQvWX1oRNJJsOJkNWUvsJNqOePkeEWpGScXtRpYwexQ3gokPWU8xk_FFbUbA4kcYbQkbw6rAPo87hZbzoB1FCuVJpRgfDvVCXPm5ccPA44Ru8xPANKFZjvT2xLf3AL6LM8oEg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Usuario por Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzbXV1c2VyIiwiYXVkIjoic211dXNlciIsIm5iZiI6MTY4Mjk2NTMyMiwic2NvcGUiOlsidXNlcnM6cmVhZCIsInVzZXJzOndyaXRlIl0sImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDgyIiwiZXhwIjoxNjgyOTY1NjIyLCJpYXQiOjE2ODI5NjUzMjJ9.IlirR1z6vbGbRvB2SUndhPUdPdPbx6-sKoNpUJ4__AzxVZ1AvF8DMks7Iogig4yoYFTAjN4LnkPymS1Ti7QDokqVTYjeJ6UAaGK6fHE__G0vHq9yZ16O_u4b0beF6ztvwvn7swt3GGpfYsHsgSGW_kpZTTyri2n80mOaoqa48RtDMG8gyugTsXyMoZZ_hMkfcBOsbBj4ns2W0SBKqdLs2cZ-fG3CvgVWS9cXYZKYsqkgpVDYQwbgN94FeTrY9Vqbk8PGKHSXJT3oIE5v-4Lsj_pTZO1vqZzaPt23pBITK2AznLEFBFWJi41Ip6yIpkX_BPX8vT-jExF_mjFt17l2Vg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/:userId",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conta",
+			"item": [
+				{
+					"name": "Fazer deposito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJwYW1lbGxhLmFyYXVqbzc3QG91dGxvb2suY29tIiwiYXVkIjoic211YWNjb3VudCIsIm5iZiI6MTY4MzE0MDg4OCwidXNlcl9pZCI6IjQiLCJzY29wZSI6WyJhY2NvdW50czp3cml0ZSIsInVzZXJzOnJlYWQiLCJhY2NvdW50czpyZWFkIiwidXNlcnM6d3JpdGUiXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODIiLCJ1c2VyX2Z1bGxuYW1lIjoiUGFtZWxsYSBBcmF1am8iLCJleHAiOjE2ODMxNDE3ODgsImlhdCI6MTY4MzE0MDg4OCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9QRiJdfQ.gyUbbzcHdbQvLcejnoe7tp3fkTGkiQm0Y4mMcvStt_k1DuMhjFIvuHlu6IiJLube4p5w6oUG3FZD6LApBko4ZS68xWH93GzUUaTA1deNRhJuk3KKCEhDLf42ho8nQigTMfw7tVqP25DzMeGM0I4jHnRQUWP5Mye__tQcsEOrl-VLqnjD98q4VnTrHgNcVHXCQzuD3UPjhUaVtxaoq3_XDOUlU6tFSiO-gcgTUhdSmAx7gYa65kf4f1EQ6GdD-UoJRT1eNCiFXGEFtiDSE9CNylEQ9_QZsFolZVkeUl3TsFul9q22qD4Y8NIvoOLLrBKI9ZLHaLHzU-d91rU1ch5wgw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accounts/40.00/000002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts",
+								"40.00",
+								"000002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fazer saque",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJhdWQiOiJzbXVhY2NvdW50IiwibmJmIjoxNjgzMTQ2OTY4LCJ1c2VyX2lkIjoiMSIsInNjb3BlIjpbImFjY291bnRzOndyaXRlIiwidXNlcnM6cmVhZCIsImFjY291bnRzOnJlYWQiLCJ1c2Vyczp3cml0ZSJdLCJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MiIsInVzZXJfZnVsbG5hbWUiOiJHZW5pbGRvIEFyYXVqbyIsImV4cCI6MTY4MzE0Nzg2OCwiaWF0IjoxNjgzMTQ2OTY4LCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.HyHECt1Y7OOrR3J3WWUpXSXXD2fI4Cxvi9KOeSrJEGfL-VIuosk8oMmTBjiV6IWBzJQdS1E4DoQpjvsDPYt00mDbdNPLJX_Hxk6NuZH0DoF8-HnzsfH5RzT8qLkdwjEc2UMqhveMicZin83YrLwB9iV7fQV20yVgynJH05eHPmKyKOqnt7hWdJHlSqbgwGAU892OQwM4bXYZA_oCKETShPQ53KjyTB-jTtyyXUARYUzwfqWOFJOYsg9gN0oKgm2gV_A8ppDrHCQlZEhxU2eP1S7NxptpxnmLQDjwBc9DjOOTKNQfEkqUB53wEHpEPj_CxvwK3vh-wrWKwRNvEogD2w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accounts/draw/1.00/000002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts",
+								"draw",
+								"1.00",
+								"000002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fazer transferencia para outra conta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJwYW1lbGxhLmFyYXVqbzc3QG91dGxvb2suY29tIiwiYXVkIjoic211YWNjb3VudCIsIm5iZiI6MTY4MzE0ODg0OCwidXNlcl9pZCI6IjQiLCJzY29wZSI6WyJhY2NvdW50czp3cml0ZSIsInVzZXJzOnJlYWQiLCJhY2NvdW50czpyZWFkIiwidXNlcnM6d3JpdGUiXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODIiLCJ1c2VyX2Z1bGxuYW1lIjoiUGFtZWxsYSBBcmF1am8iLCJleHAiOjE2ODMxNDk3NDgsImlhdCI6MTY4MzE0ODg0OCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9QRiJdfQ.dP1pikqiuZcRrv1l-SpMYzVMr7VycRfGXj5FjYFb0yUEEU-UFp56Ss0Hrl83HD9hn4u1lxB-8ggn2mfFG7oGJmySNKrO48EyjOdic2x2OeSIByBT6YE9a14R2Wf_CkWQ2n4nj8eGFcI0-5UOjMKQzp_l8kR1Jl4t4nETYRinb5_QYygzQCI97QMoQel46XhQfybTUlBrAj6ZJ84dXq8GDI7s5J2hifS8CyErMnmWaQKauMYnf2QDlI8BBvFXQdbI8wq-YdAHyVUkxKLNBjTMNRnn4NkcVthrjluxo1zrPr3w4Uptsmc6cpdMXHUCF9lwKsBFSgqFPUgNe5nqE9DUbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accounts/000002/transfer/10.00/000002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts",
+								"000002",
+								"transfer",
+								"10.00",
+								"000002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir extrato da conta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJwYW1lbGxhLmFyYXVqbzc3QG91dGxvb2suY29tIiwiYXVkIjoic211YWNjb3VudCIsIm5iZiI6MTY4MzE1MTI2MywidXNlcl9pZCI6IjQiLCJzY29wZSI6WyJhY2NvdW50czp3cml0ZSIsInVzZXJzOnJlYWQiLCJhY2NvdW50czpyZWFkIiwidXNlcnM6d3JpdGUiXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODIiLCJ1c2VyX2Z1bGxuYW1lIjoiUGFtZWxsYSBBcmF1am8iLCJleHAiOjE2ODMxNTIxNjMsImlhdCI6MTY4MzE1MTI2MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9QRiJdfQ.MOWcdGgf9k79TKQmSP7GbbLptcZ2nWjqrvQKZqUsBjmvy2krqbr-eMZ3qsU7ECfD1L1Tbi9UfdSE9uqJuybkgAPaXv9J4jgnQoCdCSod2EhuTjR7JUdMDRbd6ZT1EOQU_WNmCUW2EDmZxqoyH6ALXk7-Z-qXPvgmnIR01SYcuC8wPjnyPyvMgZIZ--2xtnpjbZcirPiqPxoApuava_MBEbnXlL6xVzMhuBZMdGm_iJyCIDxMsK-Bpx5P-BuudaAm_CsIPK8_94uK5FepjAdLXJRrWlCK60avuYdWUfGJn5hFrOjm8anXAJyx4Mu8XggLSvR3vvlBfakjBuKhwjrArg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accounts/extract/000002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts",
+								"extract",
+								"000002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fazer bloqueio da conta por user adm",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ4NXQjUzI1NiI6ImdSVXJaT1IwaWc1STlFd0MtZnp2aVlZREE3dWdVYW5ja2xBZm1sNWJLUU0iLCJraWQiOiJzbXVpbnYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJwYW1lbGxhLmFyYXVqbzc3QG91dGxvb2suY29tIiwiYXVkIjoic211YWNjb3VudCIsIm5iZiI6MTY4MzE0MDg4OCwidXNlcl9pZCI6IjQiLCJzY29wZSI6WyJhY2NvdW50czp3cml0ZSIsInVzZXJzOnJlYWQiLCJhY2NvdW50czpyZWFkIiwidXNlcnM6d3JpdGUiXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODIiLCJ1c2VyX2Z1bGxuYW1lIjoiUGFtZWxsYSBBcmF1am8iLCJleHAiOjE2ODMxNDE3ODgsImlhdCI6MTY4MzE0MDg4OCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9QRiJdfQ.gyUbbzcHdbQvLcejnoe7tp3fkTGkiQm0Y4mMcvStt_k1DuMhjFIvuHlu6IiJLube4p5w6oUG3FZD6LApBko4ZS68xWH93GzUUaTA1deNRhJuk3KKCEhDLf42ho8nQigTMfw7tVqP25DzMeGM0I4jHnRQUWP5Mye__tQcsEOrl-VLqnjD98q4VnTrHgNcVHXCQzuD3UPjhUaVtxaoq3_XDOUlU6tFSiO-gcgTUhdSmAx7gYa65kf4f1EQ6GdD-UoJRT1eNCiFXGEFtiDSE9CNylEQ9_QZsFolZVkeUl3TsFul9q22qD4Y8NIvoOLLrBKI9ZLHaLHzU-d91rU1ch5wgw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accounts/40.00/000002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts",
+								"40.00",
+								"000002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
