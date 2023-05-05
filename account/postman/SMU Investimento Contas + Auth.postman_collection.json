@@ -48,7 +48,8 @@
 									"value": "users:read users:write accounts:write accounts:read"
 								}
 							]
-						}
+						},
+						"description": "requisição para solicitar o authorization code e dar consentimento para os scopes read e write"
 					},
 					"response": []
 				},
@@ -103,7 +104,8 @@
 								"oauth2",
 								"token"
 							]
-						}
+						},
+						"description": "Gerar token passando um authorization code"
 					},
 					"response": []
 				},
@@ -153,7 +155,8 @@
 								"oauth2",
 								"token"
 							]
-						}
+						},
+						"description": "Gerar acces token passando um refresh token"
 					},
 					"response": []
 				},
@@ -198,11 +201,13 @@
 								"oauth2",
 								"revoke"
 							]
-						}
+						},
+						"description": "Inutilizar tokens gerados"
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Autenticação no authorization server e geração de tokens e refresh tokens"
 		},
 		{
 			"name": "Usuarios",
@@ -233,7 +238,8 @@
 							"path": [
 								"users"
 							]
-						}
+						},
+						"description": "Cria user e retorna o mesmo com os dados de sua conta criada"
 					},
 					"response": []
 				},
@@ -261,7 +267,8 @@
 							"path": [
 								"users"
 							]
-						}
+						},
+						"description": "Listar todos os usuários"
 					},
 					"response": []
 				},
@@ -290,11 +297,13 @@
 								"users",
 								"4"
 							]
-						}
+						},
+						"description": "Buscar user passando o seu id"
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Cadastro de usuários PF, PJ e ADMIN"
 		},
 		{
 			"name": "Conta",
@@ -453,11 +462,13 @@
 								"block-account",
 								"000002"
 							]
-						}
+						},
+						"description": "Neste endpoint tanto o user como a conta ficaram com status BLOCKED"
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Pasta referente as operações bancarias"
 		}
 	]
 }
